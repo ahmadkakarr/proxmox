@@ -1,3 +1,81 @@
+# http://traefik-ip:8080//dashboard/#/
+# sudo nano /etc/traefik/traefik.yml
+# sudo rm /etc/traefik/traefik.yml
+# sudo rm /home/ahmad/logs/traefik.log
+
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: true
+# Disable SSL certificate verification. (Default: false)
+serversTransport:
+  insecureSkipVerify: true
+entryPoints:
+  web:
+    address: :80
+  websecure:
+    address: :443
+    forwardedHeaders:
+      trustedIPs: &trustedIps
+        - 172.18.0.0/16
+        - 173.245.48.0/20
+        - 103.21.244.0/22
+        - 103.22.200.0/22
+        - 103.31.4.0/22
+        - 141.101.64.0/18
+        - 108.162.192.0/18
+        - 190.93.240.0/20
+        - 188.114.96.0/20
+        - 197.234.240.0/22
+        - 198.41.128.0/17
+        - 162.158.0.0/15
+        - 104.16.0.0/13
+        - 104.24.0.0/14
+        - 172.64.0.0/13
+        - 131.0.72.0/22
+        - 2400:cb00::/32
+        - 2606:4700::/32
+        - 2803:f800::/32
+        - 2405:b500::/32
+        - 2405:8100::/32
+        - 2a06:98c0::/29
+        - 2c0f:f248::/32
+        # End of Cloudflare public IP list
+    http:
+      tls:
+        options: tls-opts@file
+        certResolver: dns-cloudflare
+        domains:
+          - main: digitalstudio.ltd
+            sans:
+              - traefik.digitalstudio.ltd
+      encodeQuerySemicolons: true
+  traefik:
+    address: :8080
+certificatesResolvers:
+  dns-cloudflare:
+    acme:
+      email: ahmadkakarr@gmail.com
+      caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+      storage: /home/ahmad/acme/acme.json
+      # https://doc.traefik.io/traefik/user-guides/docker-compose/acme-dns/
+      dnsChallenge:
+        provider: cloudflare
+        delayBeforeCheck: 42s
+        resolvers:
+          - 1.1.1.1:53
+          - 1.0.0.1:53
+        # disablePropagationCheck: true
+# (Default: error) DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+log:
+  level: INFO
+  filePath: /home/ahmad/logs/traefik.log
+accessLog:
+  filePath: /home/ahmad/logs/access.log
+  filters:
+    statusCodes:
+      - 204-299
+      - 400-499
+      - 500-599
 providers:
   file:
     directory: /home/ahmad/providers
@@ -6,4 +84,3 @@ api:
   insecure: true
   dashboard: true
   debug: true
-# http://traefik.digitalstudio.ltd/dashboard/#/
