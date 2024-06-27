@@ -5,7 +5,7 @@ declare -A users_and_passwords
 
 
 containers_array=( 
-  [200]=traefik
+  # [200]=traefik
   [201]=nginx
   [202]=mariadb
   [203]=php8
