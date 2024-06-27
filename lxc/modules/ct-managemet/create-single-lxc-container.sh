@@ -6,9 +6,6 @@ declare -A users_and_passwords
 
 containers_array=( 
   [200]=traefik
-  [201]=nginx
-  [202]=mariadb
-  [203]=php8
 )
 
 ## this data can be use to create users and passwrods
@@ -72,7 +69,16 @@ sleep 3 &&\
 
 
     apt install acl
+    apt clean
+    apt autoremove
+    rm /etc/ssh/ssh_host_*
+    truncate -s 0 /etc/machine-id
+
+
 EOF
+
+
+
 done
 
 

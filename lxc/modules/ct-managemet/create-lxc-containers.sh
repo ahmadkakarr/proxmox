@@ -6,6 +6,9 @@ declare -A users_and_passwords
 
 containers_array=( 
   [200]=traefik
+  [201]=nginx
+  [202]=mariadb
+  [203]=php8
 )
 
 ## this data can be use to create users and passwrods
@@ -27,8 +30,9 @@ id=$id
 hostname=${containers_array[$id]}
 
 
+# pveam list local
 
-pct create $id /var/lib/vz/template/cache/ubuntu-22.04-standard_22.04-1_amd64.tar.zst \
+pct create $id /var/lib/vz/template/cache/ubuntu-24.04-standard_24.04-2_amd64.tar.zst \
     --arch amd64 \
     --ostype ubuntu \
     --hostname $hostname \
