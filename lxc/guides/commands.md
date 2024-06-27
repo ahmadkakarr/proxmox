@@ -3,7 +3,7 @@ bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main
 ```
 
 ```shell
-bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/create-lxc-containers.sh)"
+bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/ct-managemet/create-lxc-containers.sh)"
 ```
 
 ```shell

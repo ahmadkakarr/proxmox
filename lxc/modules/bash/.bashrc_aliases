@@ -1,0 +1,10 @@
+# Aliases
+# alias alias_name="command_to_run"
+
+# .bashrc_aliases
+# nano .bashrc_aliases
+# source .bashrc_aliases
+
+# update/copy the static file config from syncthing directory to traefik static config directory.
+alias us="cp /root/Sync/traefik/static/traefik.yml /etc/traefik/traefik.yml"
+

@@ -10,5 +10,11 @@ function download_traefik() {
 
 }
 
-
 download_traefik
+
+
+mkdir /etc/traefik
+
+touch /etc/traefik/traefik.yml
+
+
