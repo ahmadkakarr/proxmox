@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 
+# one liner
+# wget https://github.com/traefik/traefik/releases/download/v3.0.3/traefik_v3.0.3_linux_amd64.tar.gz
 function download_traefik() {
  local ver3_0_3='https://github.com/traefik/traefik/releases/download/v3.0.3/traefik_v3.0.3_linux_amd64.tar.gz'
  wget $ver3_0_3
@@ -13,8 +15,8 @@ function download_traefik() {
 download_traefik
 
 
-mkdir /etc/traefik
+# mkdir /etc/traefik
 
-touch /etc/traefik/traefik.yml
+
 
 

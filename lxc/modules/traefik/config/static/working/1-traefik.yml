@@ -56,7 +56,7 @@ certificatesResolvers:
     acme:
       email: ahmadkakarr@gmail.com
       caServer: https://acme-staging-v02.api.letsencrypt.org/directory
-      storage: /home/ahmad/acme/acme.json
+      storage: /home/ahmad/Sync/traefik/acme/acme.json
       # https://doc.traefik.io/traefik/user-guides/docker-compose/acme-dns/
       dnsChallenge:
         provider: cloudflare
@@ -68,9 +68,9 @@ certificatesResolvers:
 # (Default: error) DEBUG, INFO, WARN, ERROR, FATAL, PANIC
 log:
   level: INFO
-  filePath: /home/ahmad/logs/traefik.log
+  filePath: /home/ahmad/Sync/traefik/logs/traefik.log
 accessLog:
-  filePath: /home/ahmad/logs/access.log
+  filePath: /home/ahmad/Sync/traefik/logs/access.log
   filters:
     statusCodes:
       - 204-299
@@ -78,7 +78,7 @@ accessLog:
       - 500-599
 providers:
   file:
-    directory: /home/ahmad/providers
+    directory: /home/ahmad/Sync/traefik/dynamic/config/provider/file
     watch: true
 api:
   insecure: true
