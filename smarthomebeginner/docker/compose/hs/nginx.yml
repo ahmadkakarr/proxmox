@@ -1,0 +1,46 @@
+services:
+  # Nginx - Web Server
+  nginx:
+    container_name: nginx
+    image: nginx:1.26-bookworm
+    ports:
+      - 8089:80
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    # profiles: ['core', 'all']
+    networks:
+      - t3_proxy
+    depends_on:
+      - php8
+      - redis
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - $DOCKERDIR/logs/ws/nginx:/var/log/nginx
+      - $DOCKERDIR/appdata/nginx:/etc/nginx
+      #  - /home/ahmad/copy:/copy
+      - /home/ahmad/dockerstack/appdata/sites/html:/usr/share/nginx/html
+      - $DOCKERDIR/appdata/nginx/www/tql_dispatch_com:/usr/share/nginx/tql_dispatch_com
+
+    secrets:
+      - basic_auth_credentials
+    labels:
+      - 'traefik.enable=true'
+      # # HTTP Routers TQL Dispatch (WordPress) Auth
+      - 'traefik.http.routers.nginx-tql-dispatch-com-rtr.entrypoints=websecure'
+      - 'traefik.http.routers.nginx-tql-dispatch-com-rtr.rule=Host(`$DOMAINNAME_TQL_DISPATCH_COM`) || Host(`www.$DOMAINNAME_TQL_DISPATCH_COM`)' # no crowdsec
+      - 'traefik.http.routers.nginx-tql-dispatch-com-rtr.priority=99'
+
+      # # Redirect shb non-www to www middleware
+      - 'traefik.http.middlewares.tql-dispatch-com-redirect.redirectregex.regex=^https?://$DOMAINNAME_TQL_DISPATCH_COM/(.*)'
+      - 'traefik.http.middlewares.tql-dispatch-com-redirect.redirectregex.replacement=https://www.$DOMAINNAME_TQL_DISPATCH_COM/$${1}'
+      - 'traefik.http.middlewares.tql-dispatch-com-redirect.redirectregex.permanent=true'
+
+      # # Middlewares
+      - 'traefik.http.routers.nginx-tql-dispatch-com-rtr.middlewares=tql-dispatch-com-redirect,chain-no-auth@file' # no crowdsec
+
+      # # HTTP Services
+      - 'traefik.http.routers.nginx-tql-dispatch-com-rtr.service=nginx-svc'
+      - 'traefik.http.routers.nginx-tql-dispatch-com-auth-rtr.service=nginx-svc'
+      - 'traefik.http.services.nginx-svc.loadbalancer.server.port=80'

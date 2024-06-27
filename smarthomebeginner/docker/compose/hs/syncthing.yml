@@ -1,0 +1,36 @@
+services:
+  syncthing:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: syncthing
+    hostname: syncthing #optional
+    networks:
+      - t3_proxy
+    environment:
+      - PUID=1112
+      - PGID=1112
+      - TZ=$TZ
+    volumes:
+      - /home/ahmad/syncthing/config:/config
+      - /home/ahmad/dockerstack/appdata/traefik3:/traefik3Rules
+      - /home/ahmad/dockerstack/appdata/nginx:/nginx
+      - /home/ahmad/dockerstack/compose:/compose
+    ports:
+      - 8384:8384
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    restart: unless-stopped
+    labels:
+      - 'traefik.enable=true'
+      # HTTP Routers
+      - 'traefik.http.routers.syncthing-rtr.entrypoints=websecure'
+      - 'traefik.http.routers.syncthing-rtr.rule=Host(`syncthing.$DOMAINNAME_1`)'
+      # Middlewares
+      - 'traefik.http.routers.syncthing-rtr.middlewares=middlewares-basic-auth@file'
+      # HTTP Services
+      - 'traefik.http.routers.syncthing-rtr.service=syncthing-svc'
+      - 'traefik.http.services.syncthing-svc.loadbalancer.server.port=8384'
+# https://docs.syncthing.net/users/stdiscosrv.html#reverse-proxy-setup
+# https://forum.syncthing.net/t/syncthing-global-discovery-server-behind-traefik-reverse-proxy/20922
+# https://github.com/syncthing/syncthing/blob/main/README-Docker.md
+# https://hub.docker.com/r/linuxserver/syncthing

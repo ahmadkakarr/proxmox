@@ -1,0 +1,14 @@
+# http://traefik.digitalstudio.ltd/dashboard/#/
+http:
+  routers:
+    dashboard-rtr:
+      entryPoints:
+        - web
+        - websecure
+      rule: Host(`traefik.digitalstudio.ltd`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+      service: api@internal
+      middlewares:
+        - middlewares-basic-auth
+        - middlewares-secure-headers
+      tls:
+        certResolver: dns-cloudflare

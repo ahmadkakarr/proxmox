@@ -1,0 +1,8 @@
+http:
+  middlewares:
+    middlewares-basic-auth:
+      basicAuth:
+        users:
+          - 'ahmad:$apr1$qwjeyu01$bFWliGQPaaBqG4sjblNEi1'
+        #        usersFile: '/run/secrets/basic_auth_credentials'
+        realm: 'Traefik 3 Basic Auth'

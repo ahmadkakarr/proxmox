@@ -1,0 +1,17 @@
+services:
+  # PHP - Hypertext Preprocessor
+  php8:
+    container_name: php8.2-fpm-custom
+    image: php:8.2-fpm-custom
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    # profiles: ['core', 'all']
+    networks:
+      - t3_proxy
+    build:
+      context: $DOCKERDIR/custom/php/fpm/8.2
+      dockerfile: Dockerfile
+    user: $PUID:$PGID # allows upgrading WP and plugins
+    volumes:
+      - $DOCKERDIR/appdata/sites/html:/usr/share/nginx/html

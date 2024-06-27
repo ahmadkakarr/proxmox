@@ -1,0 +1,9 @@
+providers:
+  file:
+    directory: /home/ahmad/providers
+    watch: true
+api:
+  insecure: true
+  dashboard: true
+  debug: true
+# http://traefik.digitalstudio.ltd/dashboard/#/
