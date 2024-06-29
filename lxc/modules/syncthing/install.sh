@@ -5,7 +5,7 @@ apt update
 apt install syncthing
 systemctl start syncthing@ahmad.service
 systemctl enable syncthing@ahmad.service
-systemctl status syncthing@ahmad.service
+# systemctl status syncthing@ahmad.service
 ufw allow syncthing
 ufw allow syncthing-gui
 ufw allow OpenSSH
