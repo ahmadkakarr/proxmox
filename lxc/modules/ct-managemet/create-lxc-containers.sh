@@ -6,11 +6,11 @@ declare -A users_and_passwords
 
 containers_array=( 
   # [200]=traefik
-  # [201]=nginx
+  [201]=nginx
   # [202]=mariadb
-  # [203]=php8
-  [204]=phpmyadmin
-  [205]=apache2
+  [203]=php8
+  # [204]=phpmyadmin
+  # [205]=apache2
 )
 
 ## this data can be use to create users and passwrods
