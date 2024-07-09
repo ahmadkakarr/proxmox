@@ -11,7 +11,7 @@ bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main
 ```
 
 ```shell
-bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/delete-lxc-containers.sh)"
+bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/ct-managemet/delete-lxc-containers.sh)"
 ```
 
 ```shell

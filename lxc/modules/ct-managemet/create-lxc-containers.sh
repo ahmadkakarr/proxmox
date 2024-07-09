@@ -5,16 +5,37 @@ declare -A users_and_passwords
 
 
 containers_array=( 
-  # [200]=traefik
-  # [201]=nginx-reverse-proxy
-  # [202]=mariadb
-  # [203]=php8-fpm-1
-  # [204]=phpmyadmin
-  # [205]=apache2
-  # [206]=guacamole
+  # [200]=traefik-1
+  # [201]=nginx-reverse-proxy-1
+  # [202]=mariadb-1
+  [203]=php8-fpm-1
+  # [204]=phpmyadmin-1
+  # [205]=apache2-1
+  # [206]=guacamole-1
   # [207]=nginx-ws-1
-  [208]=pihole
+  # [208]=pihole-1
+  # [209]=portainer-1
+  # [210]=mongodb-1
+  # [211]=bind9-webmin-1
 )
+
+containers_description=( 
+  # [200]=traefik-1
+  # [201]=nginx-reverse-proxy-1
+  # [202]=mariadb-1
+  [203]=This is php-fpm container. with can be used to only serve php-requests
+  # [204]=phpmyadmin-1
+  # [205]=apache2-1
+  # [206]=guacamole-1
+  # [207]=nginx-ws-1
+  # [208]=pihole-1
+  # [209]=portainer-1
+  # [210]=mongodb-1
+  # [211]=bind9-webmin-1
+)
+
+
+
 
 ## this data can be use to create users and passwrods
 users_and_passwords=(
@@ -33,6 +54,7 @@ echo "$id" "${containers_array[$id]}"
 
 id=$id
 hostname=${containers_array[$id]}
+description=${containers_description[$id]}
 
 
 # pveam list local
@@ -48,6 +70,7 @@ pct create $id /var/lib/vz/template/cache/ubuntu-24.04-standard_24.04-2_amd64.ta
     --password kakarr \
     --onboot 1 \
     --unprivileged 1 \
+    --description $description \
     --features nesting=1,keyctl=1 \
     --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth  &&\
 echo "starting container"
