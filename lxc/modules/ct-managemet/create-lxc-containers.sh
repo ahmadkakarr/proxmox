@@ -3,7 +3,10 @@
 # bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/ct-managemet/create-lxc-containers.sh)"
 
 declare -A containers_array
+declare -A containers_description
 declare -A users_and_passwords
+
+php8-fpm-1="the description for php-fpm";
 
 
 containers_array=( 
@@ -25,7 +28,7 @@ containers_description=(
   # [200]=traefik-1
   # [201]=nginx-reverse-proxy-1
   # [202]=mariadb-1
-  [203]={This is php-fpm container. with can be used to only serve php-requests}
+  [203]=it_can_be_written_like_this only
   # [204]=phpmyadmin-1
   # [205]=apache2-1
   # [206]=guacamole-1
@@ -76,7 +79,7 @@ pct create $id /var/lib/vz/template/cache/ubuntu-24.04-standard_24.04-2_amd64.ta
     --features nesting=1,keyctl=1 \
     --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth  &&\
 echo "starting container"
-pct start $id &&\
+# pct start $id &&\
 echo "Waiting for container to start"
 
 sleep 3 &&\
