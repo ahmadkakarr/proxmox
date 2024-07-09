@@ -45,7 +45,7 @@ containers_tags=(
   # [200]=traefik-1
   # [201]=nginx-reverse-proxy-1
   # [202]=mariadb-1
-  [203]=php,php8
+  [203]=php-fpm1
   # [204]=phpmyadmin-1
   # [205]=apache2-1
   # [206]=guacamole-1
@@ -103,7 +103,8 @@ pct create $id /var/lib/vz/template/cache/ubuntu-24.04-standard_24.04-2_amd64.ta
     --features nesting=1,keyctl=1 \
     --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth  &&\
 echo "starting container"
-# pct start $id &&\
+
+
 echo "Waiting for container to start"
 
 sleep 3 &&\
