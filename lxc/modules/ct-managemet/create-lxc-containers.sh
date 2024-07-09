@@ -3,6 +3,7 @@
 # bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/ct-managemet/create-lxc-containers.sh)"
 
 declare -A containers_array
+declare -A containers_searchdomain
 declare -A containers_description
 declare -A users_and_passwords
 
@@ -28,7 +29,23 @@ containers_description=(
   # [200]=traefik-1
   # [201]=nginx-reverse-proxy-1
   # [202]=mariadb-1
-  [203]='it_can_be_written_like_this only'
+  [203]='Only_PHP-FPM_is_installed_on_this_server'
+  # [204]=phpmyadmin-1
+  # [205]=apache2-1
+  # [206]=guacamole-1
+  # [207]=nginx-ws-1
+  # [208]=pihole-1
+  # [209]=portainer-1
+  # [210]=mongodb-1
+  # [211]=bind9-webmin-1
+)
+
+
+containers_searchdomain=( 
+  # [200]=traefik-1
+  # [201]=nginx-reverse-proxy-1
+  # [202]=mariadb-1
+  [203]=srv1.php8fpm.local
   # [204]=phpmyadmin-1
   # [205]=apache2-1
   # [206]=guacamole-1
@@ -58,8 +75,10 @@ echo "$id" "${containers_array[$id]}"
 
 
 id=$id
+nameserver=192.168.88.168
 hostname=${containers_array[$id]}
 description=${containers_description[$id]}
+searchdomain=${containers_searchdomain[$id]}
 
 
 # pveam list local
@@ -76,6 +95,8 @@ pct create $id /var/lib/vz/template/cache/ubuntu-24.04-standard_24.04-2_amd64.ta
     --onboot 1 \
     --unprivileged 1 \
     --description $description \
+    --nameserver $nameserver \
+    --searchdomain $searchdomain \
     --features nesting=1,keyctl=1 \
     --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth  &&\
 echo "starting container"
