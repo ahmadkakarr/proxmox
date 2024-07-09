@@ -3,7 +3,6 @@
 # bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/ct-managemet/create-lxc-containers.sh)"
 
 declare -A containers_array
-declare -A containers_searchdomain
 declare -A containers_description
 declare -A users_and_passwords
 
@@ -41,21 +40,6 @@ containers_description=(
 )
 
 
-containers_searchdomain=( 
-  # [200]=traefik-1
-  # [201]=nginx-reverse-proxy-1
-  # [202]=mariadb-1
-  [203]=srv1.php8fpm.local
-  # [204]=phpmyadmin-1
-  # [205]=apache2-1
-  # [206]=guacamole-1
-  # [207]=nginx-ws-1
-  # [208]=pihole-1
-  # [209]=portainer-1
-  # [210]=mongodb-1
-  # [211]=bind9-webmin-1
-)
-
 
 
 
@@ -76,9 +60,9 @@ echo "$id" "${containers_array[$id]}"
 
 id=$id
 nameserver=192.168.88.168
+searchdomain=srv1.pihole.local
 hostname=${containers_array[$id]}
 description=${containers_description[$id]}
-searchdomain=${containers_searchdomain[$id]}
 
 
 # pveam list local
