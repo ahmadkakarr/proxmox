@@ -80,6 +80,7 @@ nameserver=192.168.88.168
 searchdomain=srv1.pihole.local
 hostname=${containers_array[$id]}
 description=${containers_description[$id]}
+tags=${containers_tags[$id]}
 
 
 # pveam list local
