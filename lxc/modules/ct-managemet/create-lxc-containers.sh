@@ -106,7 +106,7 @@ echo "starting container"
 # pct start $id &&\
 echo "Waiting for container to start"
 
-sleep 3 &&\
+# sleep 3 &&\
 # Starting to execute command in container untill 'EOF' Received
     pct exec $id sh <<EOF
 
