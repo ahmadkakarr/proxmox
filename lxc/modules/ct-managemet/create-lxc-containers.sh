@@ -104,35 +104,35 @@ pct create $id /var/lib/vz/template/cache/ubuntu-24.04-standard_24.04-2_amd64.ta
     --features nesting=1,keyctl=1 \
     --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth  &&\
 echo "starting container"
-# pct start $id &&\
-echo "Waiting for container to start"
+# # pct start $id &&\
+# echo "Waiting for container to start"
 
-# sleep 3 &&\
-# Starting to execute command in container untill 'EOF' Received
-    pct exec $id sh <<EOF
+# # sleep 3 &&\
+# # Starting to execute command in container untill 'EOF' Received
+#     pct exec $id sh <<EOF
 
-    echo "Updaing system OS Pakcages"
-    apt update -y 
-    apt dist-upgrade -y
-    apt clean
-    apt autoremove
-    echo "OS Packages Updated"
+#     echo "Updaing system OS Pakcages"
+#     apt update -y 
+#     apt dist-upgrade -y
+#     apt clean
+#     apt autoremove
+#     echo "OS Packages Updated"
 
-    apt install ca-certificates curl gnupg lsb-release ntp htop zip unzip gnupg apt-transport-https ca-certificates net-tools ncdu apache2-utils -y
+#     apt install ca-certificates curl gnupg lsb-release ntp htop zip unzip gnupg apt-transport-https ca-certificates net-tools ncdu apache2-utils -y
 
-    echo 'vm.swappiness=10' >> /etc/sysctl.conf
-    echo 'vm.vfs_cache_pressure = 50' >> /etc/sysctl.conf
-    echo 'fs.inotify.max_user_watches=262144' >> /etc/sysctl.conf
-
-
-    echo "Adding user"
-    useradd -c "default account" -u 1112 -s /bin/bash --group users -G sudo -m -d /home/ahmad ahmad
-    echo 'ahmad:kakarr' | chpasswd
+#     echo 'vm.swappiness=10' >> /etc/sysctl.conf
+#     echo 'vm.vfs_cache_pressure = 50' >> /etc/sysctl.conf
+#     echo 'fs.inotify.max_user_watches=262144' >> /etc/sysctl.conf
 
 
-    apt install acl
-EOF
-done
+#     echo "Adding user"
+#     useradd -c "default account" -u 1112 -s /bin/bash --group users -G sudo -m -d /home/ahmad ahmad
+#     echo 'ahmad:kakarr' | chpasswd
+
+
+#     apt install acl
+# EOF
+# done
 
 
 
