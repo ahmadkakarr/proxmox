@@ -4,6 +4,7 @@
 
 declare -A containers_array
 declare -A containers_description
+declare -A containers_tags
 declare -A users_and_passwords
 
 php8-fpm-1="the description for php-fpm";
@@ -39,6 +40,22 @@ containers_description=(
   # [211]=bind9-webmin-1
 )
 
+
+
+containers_tags=( 
+  # [200]=traefik-1
+  # [201]=nginx-reverse-proxy-1
+  # [202]=mariadb-1
+  [203]=php,php-fpm,srv1
+  # [204]=phpmyadmin-1
+  # [205]=apache2-1
+  # [206]=guacamole-1
+  # [207]=nginx-ws-1
+  # [208]=pihole-1
+  # [209]=portainer-1
+  # [210]=mongodb-1
+  # [211]=bind9-webmin-1
+)
 
 
 
@@ -81,6 +98,8 @@ pct create $id /var/lib/vz/template/cache/ubuntu-24.04-standard_24.04-2_amd64.ta
     --description $description \
     --nameserver $nameserver \
     --searchdomain $searchdomain \
+    --start 1 \
+    --tags $tags \
     --features nesting=1,keyctl=1 \
     --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth  &&\
 echo "starting container"
