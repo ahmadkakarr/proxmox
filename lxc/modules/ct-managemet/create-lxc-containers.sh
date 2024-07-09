@@ -13,7 +13,7 @@ containers_array=(
   # [200]=traefik-1
   # [201]=nginx-reverse-proxy-1
   # [202]=mariadb-1
-  [203]=php8-fpm-1
+  # [203]=php8-fpm-1
   # [204]=phpmyadmin-1
   # [205]=apache2-1
   # [206]=guacamole-1
@@ -22,13 +22,14 @@ containers_array=(
   # [209]=portainer-1
   # [210]=mongodb-1
   # [211]=bind9-webmin-1
+  [212]=nextcloud-1
 )
 
 containers_description=( 
   # [200]=traefik-1
   # [201]=nginx-reverse-proxy-1
   # [202]=mariadb-1
-  [203]='Only_PHP-FPM_is_installed_on_this_server'
+  # [203]='Only_PHP-FPM_is_installed_on_this_server'
   # [204]=phpmyadmin-1
   # [205]=apache2-1
   # [206]=guacamole-1
@@ -37,6 +38,8 @@ containers_description=(
   # [209]=portainer-1
   # [210]=mongodb-1
   # [211]=bind9-webmin-1
+  [212]=nextcloud_Server_1
+
 )
 
 
@@ -45,7 +48,7 @@ containers_tags=(
   # [200]=traefik-1
   # [201]=nginx-reverse-proxy-1
   # [202]=mariadb-1
-  [203]=php-fpm1
+  # [203]=php-fpm1
   # [204]=phpmyadmin-1
   # [205]=apache2-1
   # [206]=guacamole-1
@@ -54,6 +57,8 @@ containers_tags=(
   # [209]=portainer-1
   # [210]=mongodb-1
   # [211]=bind9-webmin-1
+  [212]=nextcloud
+
 )
 
 
