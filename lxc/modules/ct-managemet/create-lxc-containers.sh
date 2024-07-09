@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/ct-managemet/create-lxc-containers.sh)"
+
 declare -A containers_array
 declare -A users_and_passwords
 
@@ -23,7 +25,7 @@ containers_description=(
   # [200]=traefik-1
   # [201]=nginx-reverse-proxy-1
   # [202]=mariadb-1
-  [203]=This is php-fpm container. with can be used to only serve php-requests
+  [203]="This is php-fpm container. with can be used to only serve php-requests"
   # [204]=phpmyadmin-1
   # [205]=apache2-1
   # [206]=guacamole-1
