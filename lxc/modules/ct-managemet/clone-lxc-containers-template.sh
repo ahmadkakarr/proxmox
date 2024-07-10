@@ -20,7 +20,7 @@ containers_description=(
 )
 
 
-declare -a new_container_id=( "214" "215" )
+declare -a new_container_id=( 214 215 )
 
 
 for newid in "${!new_container_id[@]}"
