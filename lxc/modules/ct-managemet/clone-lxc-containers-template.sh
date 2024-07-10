@@ -29,24 +29,20 @@ containers_description=(
 
 for id in "${!containers_newid[@]}"
 do
+  echo "$id" "${containers_array[$id]}"
+
+  id=$id
+  newid=${containers_newid[$id]}
+  hostname=${containers_hostname[$newid]}
+  description=${containers_description[$id]}
 
 
+  id=$id
+  pct clone $id $newid \
+      --hostname $hostname \
+      --description $description \
+      --full 1
 
-echo "$id" "${containers_array[$id]}"
-
-id=$id
-newid=${containers_newid[$id]}
-hostname=${containers_hostname[$newid]}
-description=${containers_description[$id]}
-
-
-id=$id
-pct clone $id $newid \
-    --hostname $hostname \
-    --description $description \
-    --full 1
-
-pct start $newid
-
-
+  pct start $newid
 done
+
