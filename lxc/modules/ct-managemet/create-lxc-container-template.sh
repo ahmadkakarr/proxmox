@@ -23,7 +23,7 @@ containers_array=(
   # [210]=mongodb-1
   # [211]=bind9-webmin-1
   # [212]=nextcloud-1
-  # [213]=template-ubuntu-24-04-lts
+  [213]=template-ubuntu-24-04-lts
 )
 
 containers_description=( 
@@ -40,7 +40,7 @@ containers_description=(
   # [210]=mongodb-1
   # [211]=bind9-webmin-1
   # [212]=nextcloud_Server_1
-  # [213]=template_ubuntu_24_04_lts
+  [213]=template_ubuntu_24_04_lts
 
 
 )
@@ -61,7 +61,7 @@ containers_tags=(
   # [210]=mongodb-1
   # [211]=bind9-webmin-1
   # [212]=nextcloud
-  # [213]=template-ubuntu-24-04-lts
+  [213]=template-ubuntu-24-04-lts
 
 )
 
@@ -142,5 +142,6 @@ sleep 3 &&\
     apt install acl
 EOF
 done
+pct template $id
 
 
