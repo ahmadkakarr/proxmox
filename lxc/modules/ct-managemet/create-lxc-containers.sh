@@ -110,8 +110,8 @@ pct create $id /var/lib/vz/template/cache/ubuntu-24.04-standard_24.04-2_amd64.ta
     --start 1 \
     --tags $tags \
     --features nesting=1,keyctl=1 \
-    --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth
-     && \
+    --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth \
+     &&\
 echo "starting container"
 
 
