@@ -38,10 +38,7 @@ do
 
 
   id=$id
-  pct clone $id $newid \
-      --hostname $hostname \
-      --description $description \
-      --full 1
+  pct clone $id $newid 
 
   pct start $newid
 done
