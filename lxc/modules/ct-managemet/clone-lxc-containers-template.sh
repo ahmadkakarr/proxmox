@@ -1,4 +1,5 @@
 
+# bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/ct-managemet/clone-lxc-containers-template.sh)"
 
 declare -A containers_hostname
 declare -A containers_hostname
@@ -46,3 +47,6 @@ pct clone $id $newid \
     --full 1
 
 pct start $newid
+
+
+done
