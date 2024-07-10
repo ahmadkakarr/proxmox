@@ -5,8 +5,7 @@ declare -A containers_hostname
 declare -A containers_description
 
 
-  # [213]=template-ubuntu-24-04-lts
-
+# [213]=template-ubuntu-24-04-lts
 # id=213
 
 containers_hostname=( 
@@ -25,13 +24,12 @@ declare -a new_container_id=( 214 215 )
 
 for newid in "${new_container_id[@]}"
 do
-  # hostname=${containers_hostname[$newid]}
-  # description=${containers_description[$newid]}
-  # echo "$newid" 
-  # echo "$hostname" 
-  # echo "$description" 
   id=213
-  newid=$newid
+  hostname=${containers_hostname[$newid]}
+  description=${containers_description[$newid]}
+  echo "$newid" 
+  echo "$hostname" 
+  echo "$description" 
   echo "$id"
   pct clone $id $newid --full 1
   pct start $newid

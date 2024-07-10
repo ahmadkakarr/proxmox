@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/ct-managemet/create-lxc-containers.sh)"
+# bash -c "$(wget -LO - https://raw.githubusercontent.com/ahmadkakarr/proxmox/main/lxc/modules/ct-managemet/create-lxc-containers-template.sh)"
+
 
 declare -A containers_array
 declare -A containers_description
