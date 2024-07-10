@@ -8,10 +8,7 @@ declare -A containers_description
 
   # [213]=template-ubuntu-24-04-lts
 
-containers_newid=( 
-  [213]=214
-  [213]=215
-)
+id=213
 
 
 
@@ -27,20 +24,19 @@ containers_description=(
 )
 
 
-for id in "${!containers_newid[@]}"
+declare -a new_container_id=( "214" "215")
+
+
+for newid in "${!new_container_id[@]}"
 do
-  echo "$id" "${containers_array[$id]}"
-
-  id=$id
-  newid=${containers_newid[$id]}
-  echo "$newid"
+ 
   hostname=${containers_hostname[$newid]}
-  description=${containers_description[$id]}
+  description=${containers_description[$newid]}
+  echo "$newid" 
+  echo "$hostname" 
+  echo "$description" 
 
-
-  id=$id
   pct clone $id $newid --full 1
-
   pct start $newid
 done
 
