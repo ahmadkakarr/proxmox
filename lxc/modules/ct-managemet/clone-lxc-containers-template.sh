@@ -23,15 +23,16 @@ containers_description=(
 declare -a new_container_id=( 214 215 )
 
 
-for newid in "${!new_container_id[@]}"
+for newid in "${new_container_id[@]}"
 do
   # hostname=${containers_hostname[$newid]}
   # description=${containers_description[$newid]}
   # echo "$newid" 
   # echo "$hostname" 
   # echo "$description" 
-  newid=$newid
   id=213
+  newid=$newid
+  echo "$id"
   pct clone $id $newid --full 1
   pct start $newid
 done
