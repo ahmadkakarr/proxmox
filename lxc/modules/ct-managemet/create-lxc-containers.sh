@@ -22,7 +22,8 @@ containers_array=(
   # [209]=portainer-1
   # [210]=mongodb-1
   # [211]=bind9-webmin-1
-  [212]=nextcloud-1
+  # [212]=nextcloud-1
+  [213]=template-ubuntu-24-04-lts
 )
 
 containers_description=( 
@@ -38,7 +39,9 @@ containers_description=(
   # [209]=portainer-1
   # [210]=mongodb-1
   # [211]=bind9-webmin-1
-  [212]=nextcloud_Server_1
+  # [212]=nextcloud_Server_1
+  [213]=template_ubuntu_24_04_lts
+
 
 )
 
@@ -57,7 +60,8 @@ containers_tags=(
   # [209]=portainer-1
   # [210]=mongodb-1
   # [211]=bind9-webmin-1
-  [212]=nextcloud
+  # [212]=nextcloud
+  [213]=template-ubuntu-24-04-lts
 
 )
 
@@ -106,7 +110,8 @@ pct create $id /var/lib/vz/template/cache/ubuntu-24.04-standard_24.04-2_amd64.ta
     --start 1 \
     --tags $tags \
     --features nesting=1,keyctl=1 \
-    --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth  &&\
+    --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth \
+    --template 1 &&\
 echo "starting container"
 
 

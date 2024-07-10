@@ -40,7 +40,8 @@ pct create $id /var/lib/vz/template/cache/ubuntu-22.04-standard_22.04-1_amd64.ta
     --onboot 1 \
     --unprivileged 1 \
     --features nesting=1,keyctl=1 \
-    --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth  &&\
+    --net0 name=eth0,bridge=vmbr0,ip=dhcp,type=veth \
+    --template 1 &&\
 echo "starting container"
 pct start $id &&\
 echo "Waiting for container to start"
