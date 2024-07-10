@@ -33,12 +33,13 @@ do
 
   id=$id
   newid=${containers_newid[$id]}
+  echo "$newid"
   hostname=${containers_hostname[$newid]}
   description=${containers_description[$id]}
 
 
   id=$id
-  pct clone $id $newid 
+  pct clone $id $newid --full 1
 
   pct start $newid
 done
