@@ -31,7 +31,7 @@ do
   echo "$hostname" 
   echo "$description" 
   echo "$id"
-  pct clone $id $newid --full 1
-  pct start $newid
+  # pct clone $id $newid --full 1
+  # pct start $newid
 done
 
