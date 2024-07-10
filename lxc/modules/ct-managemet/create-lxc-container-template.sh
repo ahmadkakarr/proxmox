@@ -143,6 +143,7 @@ sleep 3 &&\
     apt install acl
 EOF
 done
+pct stop $id
 pct template $id
 
 

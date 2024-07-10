@@ -27,11 +27,11 @@ do
   id=213
   hostname=${containers_hostname[$newid]}
   description=${containers_description[$newid]}
+  echo "$id"
   echo "$newid" 
   echo "$hostname" 
   echo "$description" 
-  echo "$id"
-  # pct clone $id $newid --full 1
-  # pct start $newid
+  pct clone $id $newid --full 1 --hostname $hostname --description $description
+  pct start $newid
 done
 
